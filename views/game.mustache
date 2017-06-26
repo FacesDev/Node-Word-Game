@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./styles.css" />
+
+    </head>
+    <body>
+    <div class="page-two-content">
+    <p class="win">{{win}}</p>
+    <p class="game-over">{{game_over}}</p>
+     <a class="restart" href="/">{{restart}}</a>
+     
+
+    <p class="error-style">{{error_message}}</p>
+
+   
+    <p>Word Length: {{length}}</p>
+    <p>Total Guess: {{guess_number}}</p>
+    <h1>{{dash_visual}}</h1>
+    <form method="post" action="game">
+        <input class="inputbar" type"text" name="letter" placeholder="Da guess goes hur"/>
+        <button type="submit">Guess NOW!</button>
+    </form>
+    <p> Your Letters: {{guess}}</p>
+    <p>Wrong Letters: {{wrong_guess}}</p>
+    </div>
+    <video width="100%" height="100%" controls loop autoplay>
+     <source src="vid.mov" type="video/mp4">
+ 
+
+  </video>
+  </body>
+</html>

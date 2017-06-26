@@ -1,0 +1,83 @@
+body {
+    position:relative;
+    background-color:black;
+}
+
+.page-one-background {
+    background-image: url("gamew.gif");
+    background-size: cover;
+    height:100%;
+    position:relative;
+
+}
+.page-two-content {
+    font-size: 20px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    color: white;
+    z-index:1;
+}
+video {
+    z-index:2;
+}
+
+a {
+    position: absolute;
+    left: 60%;
+    top: 40%;
+    text-decoration:none;
+    font-size:40px;
+    color:#75D3F9;
+    font-family: 'VTFMisterPixelRegular'; 
+    font-weight: normal; 
+    font-style: normal; 
+    animation: 9s ease 0s normal forwards 1 fadein;
+}
+@keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+a:hover {
+     animation: blinker 1s linear infinite;
+}
+.restart {
+    left: -120%;
+    top: 30%;
+    animation: blinker 1s linear infinite;
+}
+.error-style {
+        position: ABSOLUTE;
+    color: red;
+    top: 51%;
+    left: -5%;
+    animation: blinker .5s linear infinite;
+    width:400px;
+}
+.win {
+    position: absolute;
+    left: -172%;
+    top: 7%;
+    font-size: 40px;
+    color: red;
+}
+
+.game-over {
+
+    width: 100%;
+    position: absolute;
+    left: -115%;
+    top: 7%;
+    font-size: 40px;
+}
+
+img {
+    height:500px;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+}
