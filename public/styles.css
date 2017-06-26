@@ -51,7 +51,7 @@ a:hover {
 .error-style {
         position: ABSOLUTE;
     color: red;
-    top: 51%;
+    top: 45%;
     left: -5%;
     animation: blinker .5s linear infinite;
     width:400px;
@@ -79,5 +79,4 @@ img {
 
 @keyframes blinker {  
   50% { opacity: 0; }
-}
 }

@@ -99,6 +99,7 @@ application.post('/game', (request, response) => {
                         dash[i] = word;
                         var noComma = dash.join(" ");
                         request.session.dash_visual = noComma;
+                        
                     }
                 }
             } else {
