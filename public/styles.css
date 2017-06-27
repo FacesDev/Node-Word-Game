@@ -21,6 +21,15 @@ body {
 video {
     z-index:2;
 }
+.light-1 {
+    background-color:green;
+    border-radius: 50%;
+    height:100px;
+    width:100px;
+    position:absolute;
+    top:60%;
+    left:20%;
+}
 
 a {
     position: absolute;
