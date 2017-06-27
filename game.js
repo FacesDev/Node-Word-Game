@@ -61,48 +61,42 @@ application.post('/game', (request, response) => {
     var error = request.validationErrors();
     if (error === false) {
         request.session.error_message = "";
-        
-        
-            var dash = request.session.dash;
-            if (request.session.word.search(request.body.letter) != -1 && request.session.guess.includes(request.body.letter) === false) {
-                request.session.guess += request.body.letter;
-                for (var i = 0; i < request.session.word.length; i++) {
-                    if (request.session.word[i].search(request.body.letter) != -1) {
-                        request.session.counter += 1;
-                        var index = request.session.word.indexOf(request.body.letter);
-                        var word = request.session.word[i];
-                        dash[i] = word;
-                        var noComma = dash.join(" ");
-                        request.session.dash_visual = noComma;
-                        if (request.session.counter === request.session.length) {
-                            request.session.win = "Game Over, You win!";
-                            request.session.restart = "Play Again?";
-                            console.log("bla");
-                        }
+        var dash = request.session.dash;
+        if (request.session.word.search(request.body.letter) != -1 && request.session.guess.includes(request.body.letter) === false) {
+            request.session.guess += request.body.letter;
+            for (var i = 0; i < request.session.word.length; i++) {
+                if (request.session.word[i].search(request.body.letter) != -1) {
+                    request.session.counter += 1;
+                    var index = request.session.word.indexOf(request.body.letter);
+                    var word = request.session.word[i];
+                    dash[i] = word;
+                    var noComma = dash.join(" ");
+                    request.session.dash_visual = noComma;
+                    if (request.session.counter === request.session.length) {
+                        request.session.win = "Game Over, You win!";
+                        request.session.restart = "Play Again?";
+                        console.log("bla");
                     }
                 }
-            } else {
-                request.session.wrong_guess += request.body.letter;
-                request.session.guess_number += 1;
-                request.session.color = "red";
-                if (request.session.guess_number >= 8){
-                    request.session.game_over = "Game Over";
-                    request.session.restart = "Restart Game?";
-                    for(var i = 0; i<request.session.word.length; i++) {
+            }
+        } else {
+            request.session.wrong_guess += request.body.letter;
+            request.session.guess_number += 1;
+            request.session.color = "red";
+            if (request.session.guess_number >= 8) {
+                request.session.game_over = "Game Over";
+                request.session.restart = "Restart Game?";
+                for (var i = 0; i < request.session.word.length; i++) {
                     var dash = request.session.dash;
                     var word = request.session.word[i];
                     dash[i] = word;
                     var noComma = dash.join(" ");
                     request.session.dash_visual = noComma;
                 }
-                }
             }
         }
-    
-
-    
-
- else {
+    }
+    else {
         request.session.error_message = error[0].msg;
     }
     response.render('game', request.session);
