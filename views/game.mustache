@@ -13,7 +13,6 @@
     <p class="error-style">{{error_message}}</p>
 
     <p>Word Length: {{length}}</p>
-    <p>Total Guess: {{guess_number}}</p>
     <h1>{{dash_visual}}</h1>
     <form method="post" action="game">
         <input class="inputbar" type"text" name="letter" placeholder="Da guess goes hur"/>
@@ -27,6 +26,17 @@
  
 
   </video>
-  <div class="light-1" style="background-color:{{color}}"></div>
+  <div class="light-holder">
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color1}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color2}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color3}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color4}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color5}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color6}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color7}}, #000)"></div>
+    <div class="light" style="background: radial-gradient(circle at 100px 100px, {{color8}}, #000)"></div>
+  </div>Ï
+
+
   </body>
 </html>

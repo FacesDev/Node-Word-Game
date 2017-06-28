@@ -47,7 +47,15 @@ application.get('/game', (request, response) => {
     request.session.error_message = "";
     request.session.counter = 0;
     request.session.win = "";
-    request.session.color = "green";
+    request.session.red = "red";
+    request.session.color1 = "green";
+    request.session.color2 = "green";
+    request.session.color3 = "green";
+    request.session.color4 = "green";
+    request.session.color5 = "green";
+    request.session.color6 = "green";
+    request.session.color7 = "green";
+    request.session.color8 = "green";
     for (var i = 0; i < request.session.length; i++) {
         request.session.dash.push("_");
     };
@@ -58,8 +66,7 @@ application.post('/game', (request, response) => {
     request.checkBody('letter', 'No Letter Provided. Try again!').notEmpty();
     request.checkBody('letter', "Please Enter ONE LETTER! hur dur dur").matches(/^.{0,1}$/, "i");
     request.session.error = request.validationErrors();
-    var error = request.validationErrors();
-    if (error === false) {
+    if (request.session.error === false) {
         request.session.error_message = "";
         var dash = request.session.dash;
         if (request.session.word.search(request.body.letter) != -1 && request.session.guess.includes(request.body.letter) === false) {
@@ -68,36 +75,47 @@ application.post('/game', (request, response) => {
                 if (request.session.word[i].search(request.body.letter) != -1) {
                     request.session.counter += 1;
                     var index = request.session.word.indexOf(request.body.letter);
-                    var word = request.session.word[i];
-                    dash[i] = word;
+                    dash[i] = request.session.word[i];
                     var noComma = dash.join(" ");
                     request.session.dash_visual = noComma;
                     if (request.session.counter === request.session.length) {
                         request.session.win = "Game Over, You win!";
                         request.session.restart = "Play Again?";
-                        console.log("bla");
                     }
                 }
             }
         } else {
+            var red = request.session.red;
+            var guess = request.session.guess_number
             request.session.wrong_guess += request.body.letter;
             request.session.guess_number += 1;
-            request.session.color = "red";
-            if (request.session.guess_number >= 8) {
+            if (guess === 0) {
+                request.session.color1 = red;
+            } else if(guess === 1){
+                request.session.color2 = red;
+            } else if(guess === 2){
+                request.session.color3 = red;
+            } else if(guess === 3){
+                request.session.color4 = red;
+            } else if(guess === 4){
+                request.session.color5 = red;
+            } else if(guess === 5){
+                request.session.color6 = red;
+            } else if(guess === 6){
+                request.session.color7 = red;
+            } else if (guess >= 8) {
                 request.session.game_over = "Game Over";
                 request.session.restart = "Restart Game?";
+                request.session.color8 = red;
                 for (var i = 0; i < request.session.word.length; i++) {
-                    var dash = request.session.dash;
-                    var word = request.session.word[i];
-                    dash[i] = word;
-                    var noComma = dash.join(" ");
+                    request.session.dash[i] = request.session.word[i];
+                    var noComma = request.session.dash.join(" ");
                     request.session.dash_visual = noComma;
                 }
             }
         }
-    }
-    else {
-        request.session.error_message = error[0].msg;
+    } else {
+        request.session.error_message = request.session.error[0].msg;
     }
     response.render('game', request.session);
 });
